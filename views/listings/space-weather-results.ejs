@@ -1,0 +1,53 @@
+<% layout('/layouts/boilerplate') %>
+
+<head>
+  <!-- Include Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card {
+      margin: 10px 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .card-text {
+      font-size: 1.2rem;
+    }
+    .note {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover;">
+  <div class="container">
+    <h1 class="text-center my-4">Space Weather News</h1>
+
+    <% if (events.length > 0) { %>
+      <% events.forEach((item, index) => { %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Event <%= index + 1 %>: Space Weather Event</h5>
+            <p class="card-text"><strong>Date:</strong> <%= new Date(item.date).toLocaleDateString() %></p>
+            <p class="card-text"><strong>Event:</strong> <%= item.description %></p>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p class="text-center">No space weather events found for this year.</p>
+    <% } %>
+
+    <div class="text-center mt-3">
+      <a href="/space-weather" class="btn btn-dark">Back</a>
+      <a href="/astrogallery" class="btn btn-dark">Back to Gallery</a>
+    </div>
+  </div>
+</body>
+
+

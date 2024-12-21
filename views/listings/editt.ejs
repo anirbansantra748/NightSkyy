@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-5" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="card p-4 shadow-lg" style="width: 100%; max-width: 500px; background: linear-gradient(135deg, #1d3557, #457b9d); color: #dce5da; border-radius: 15px;">
+        <h1 style="font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 20px;">Edit Comment</h1>
+        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+            <div class="mb-3">
+                <textarea
+                    class="form-control"
+                    name="text"
+                    rows="4"
+                    required
+                    style="background-color: rgba(255, 255, 255, 0.1); color: #f1faee; border: 1px solid #f1faee; border-radius: 10px; padding: 10px; font-size: 1rem;"
+                ><%= comment.text %></textarea>
+            </div>
+            <button
+                type="submit"
+                class="btn btn-block"
+                style="width: 100%; background-color: #e63946; color: white; padding: 10px; font-size: 1.2rem; border-radius: 10px; border: none; cursor: pointer; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#d62828'"
+                onmouseout="this.style.backgroundColor='#e63946'"
+            >
+                Update Comment
+            </button>
+        </form>
+    </div>
+</div>

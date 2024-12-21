@@ -1,0 +1,123 @@
+<% layout("/layouts/boilerplate") %>
+
+<body
+  style="
+    background-image: url('https://wallpapercave.com/wp/wp4586085.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+  "
+>
+  <!-- Container for centering content -->
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <!-- Form Card -->
+    <div
+      class="card p-5"
+      style="
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        width: 400px;
+      "
+    >
+      <h2 class="text-center mb-4" style="color: #ffcb6b; text-shadow: 0 0 15px #ffcb6b;">
+        Create New Post
+      </h2>
+      <form action="/new" method="POST" style="color:white">
+        <!-- Title -->
+        <div class="form-group mb-3">
+          <label for="title" style="font-weight: bold;">Title:</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            placeholder="Enter a title"
+            required
+            style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="form-group mb-3">
+          <label for="description" style="font-weight: bold;">Description:</label>
+          <textarea
+            name="description"
+            class="form-control"
+            rows="3"
+            placeholder="Enter description"
+            required
+            style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+          ></textarea>
+        </div>
+
+        <!-- Image URL -->
+        <div class="form-group mb-3">
+          <label for="image" style="font-weight: bold;">Image URL:</label>
+          <p class="small mb-2" style="color: #ffcb6b;">
+            Don't have an image URL? <a href="https://sigmawire.net/image-to-url-converter" target="_blank" style="color: #ff6b6b; text-decoration: underline;">Click here</a> to upload your image and get a link.
+          </p>
+          <input
+            type="text"
+            name="image"
+            class="form-control"
+            placeholder="Enter image URL"
+            required
+            style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+          />
+        </div>
+
+        <!-- Date -->
+        <div class="form-group mb-4">
+          <label for="createdAt" style="font-weight: bold;">Date:</label>
+          <input
+            type="date"
+            name="createdAt"
+            class="form-control"
+            style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-gradient btn-lg px-4 py-2"
+            style="background: linear-gradient(45deg, #ff6b6b, #ffcb6b); border: none; color: white; font-weight: bold; border-radius: 50px; transition: transform 0.3s ease;"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Styling -->
+  <style>
+    .btn-gradient:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #e55656, #e6c556);
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 10px #ffcb6b;
+      outline: none;
+    }
+
+    .card {
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</body>

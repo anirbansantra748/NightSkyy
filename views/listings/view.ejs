@@ -1,0 +1,105 @@
+<% layout("/layouts/boilerplate") %>
+<body style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg'); background-size: cover; background-attachment: fixed; color: #f8f9fa; font-family: 'Roboto', sans-serif;">
+  <div class="container mt-5">
+    <!-- Post Details -->
+    <div class="card mb-5" style="background: rgba(30, 30, 30, 0.9); border: none; border-radius: 20px; box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6); overflow: hidden;">
+      <div class="row no-gutters">
+        <div class="col-md-6">
+          <img src="<%= post.image %>" class="img-fluid" alt="Post Image" style="height: 100%; object-fit: cover; border-radius: 20px 0 0 20px;">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body p-4">
+            <h2 class="card-title text-uppercase" style="color: #e84545; font-weight: bold; letter-spacing: 2px;">
+              <%= post.title %>
+            </h2>
+            <p class="text-muted" style="font-size: 0.9rem; margin-top: 10px;">
+              <i class="fa fa-user-circle" style="color: #e84545;"></i> <strong style="color: #ffffff;"><%= post.author.username %></strong> •
+              <i class="fa fa-clock" style="color: #e84545;"></i> <span style="color: white;"><%= new Date(post.createdAt).toDateString() %></span>
+            </p>
+            <p class="card-text mt-3" style="font-size: 1.1rem; line-height: 1.6; color: wheat;"><%= post.description %></p>
+
+            <!-- Post Controls -->
+            <div class="d-flex mt-4 justify-content-between align-items-center">
+              <!-- Like Button -->
+              <form action="/posts/<%= post._id %>/like" method="POST" class="mr-3">
+                <button type="submit" class="btn" style="font-size: 1.5rem; background: none; border: none; color: #e84545; cursor: pointer;">
+                  <i class="<%= post.likes > 0 ? 'fa-solid fa-heart' : 'fa-regular fa-heart' %>"></i> <%= post.likes %>
+                </button>
+              </form>
+
+              <!-- Action Buttons -->
+              <div class="d-flex align-items-center">
+                <% if (user && user.username === post.author.username) { %>
+                  <a href="/edit/<%= post._id %>" class="text-warning mx-2" style="font-size: 1.5rem; cursor: pointer;">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                  <form action="/delete/<%= post._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" class="text-danger mx-2" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </form>
+                <% } %>
+                <button class="text-secondary mx-2" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;" onclick="sharePost('<%= post._id %>')">
+                  <i class="fa fa-share-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <h3 class="mb-4 text-center text-uppercase" style="color: #e84545; font-weight: bold;">Comments</h3>
+
+      <% post.comments.forEach(comment => { %>
+        <div class="card mb-3" style="background: rgba(40, 40, 40, 0.95); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
+          <div class="card-body p-3">
+            <p style="font-size: 0.9rem; line-height: 1.4; color: #f8f9fa; margin-bottom: 0.5rem;">
+              <i class="fa fa-user-circle" style="color: #e84545;"></i>
+              <strong style="color: #e84545;"><%= comment.author.username %></strong>: <%= comment.text %>
+            </p>
+            <p class="text-muted mb-2" style="font-size: 0.8rem;"><i class="fa fa-clock"></i> <span style="color: white;"><%= new Date(comment.createdAt).toDateString() %></span></p>
+            <% if (user && comment.author.username === user.username) { %>
+              <div class="d-flex justify-content-end">
+                <a href="/comments/<%= comment._id %>/edit" class="text-warning mr-3" style="font-size: 1rem; cursor: pointer;">
+                  <i class="fa fa-edit"></i>
+                </a>
+                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST" style="display:inline;">
+                  <button type="submit" class="text-danger" style="background: none; border: none; font-size: 1rem; cursor: pointer;">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+
+      <!-- Add Comment Form -->
+      <% if (user) { %>
+        <form action="/posts/<%= post._id %>/comments" method="POST" class="mt-4">
+          <div class="form-group">
+            <textarea name="text" class="form-control" placeholder="Add a comment..." rows="2" style="background: rgba(50, 50, 50, 0.95); border: 1px solid rgba(255, 255, 255, 0.2); color: white; font-size: 0.9rem;" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-outline-light mt-2" style="font-size: 0.9rem; color: white;">
+            <i class="fa fa-paper-plane"></i> Post Comment
+          </button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Share Post Script -->
+  <script>
+    function sharePost(postId) {
+      const postLink = window.location.origin + '/posts/' + postId;
+      navigator.clipboard.writeText(postLink).then(() => {
+        alert('Post link copied to clipboard!');
+      }).catch(err => {
+        alert('Failed to copy link: ' + err);
+      });
+    }
+  </script>
+</body>

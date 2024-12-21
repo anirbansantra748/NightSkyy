@@ -1,0 +1,109 @@
+<% layout("/layouts/boilerplate") %>
+
+<body
+  style="
+    background-color: #1a1a1a;
+    background-image: url('<%= post.image %>');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    filter: brightness(0.5); /* Darkens background for text clarity */
+    color: rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+  "
+>
+  <div class="container py-5">
+    <!-- Page Title -->
+    <h1 class="text-center mb-4" style="text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);">Edit Post</h1>
+
+    <!-- Form Card -->
+    <div class="card bg-dark text-white shadow-lg mx-auto" style="max-width: 700px; border-radius: 20px; opacity: 0.95;">
+      <div class="card-body p-4">
+        <form action="/edit/<%= post._id %>?_method=PUT" method="POST">
+          <!-- Title Input -->
+          <div class="form-group mb-4">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="title"
+              name="title"
+              value="<%= post.title %>"
+              style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+              required
+            />
+          </div>
+
+          <!-- Description Input -->
+          <div class="form-group mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              class="form-control form-control-lg"
+              id="description"
+              name="description"
+              rows="5"
+              style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+              required
+            ><%= post.description %></textarea>
+          </div>
+
+          <!-- Image URL Input -->
+          <div class="form-group mb-4">
+            <label for="image" class="form-label">Image URL</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="image"
+              name="image"
+              value="<%= post.image %>"
+              style="background-color: rgba(255, 255, 255, 0.1); color: white; border: none;"
+            />
+          </div>
+
+          <!-- Update Button -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-gradient btn-lg px-5">Update Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Styling -->
+  <style>
+    body {
+      overflow: hidden; /* Prevent background scroll if form is fixed */
+    }
+
+    .btn-gradient {
+      background: linear-gradient(45deg, #007bff, #d63384);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(45deg, #0056b3, #b62272);
+      transform: scale(1.1);
+    }
+
+    .form-control {
+      box-shadow: none;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</body>

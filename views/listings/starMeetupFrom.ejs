@@ -1,0 +1,220 @@
+<% layout("/layouts/boilerplate") %>
+
+<body
+  style="
+    background-image: url('https://wallpapercave.com/wp/wp4586085.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+  "
+>
+  <div
+    class="container mt-5 p-4 rounded"
+    style="background-color: rgba(0, 0, 0, 0.8); max-width: 600px;"
+  >
+    <h1 class="text-center mb-4" style="font-weight: bold; color: #f39c12;">
+      Create a Star Meetup Event
+    </h1>
+    <form action="/starMeetup" method="POST">
+      <!-- Event Name -->
+      <div class="mb-3">
+        <label for="eventName" class="form-label">Event Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eventName"
+          name="eventName"
+          required
+        />
+      </div>
+
+      <!-- Location and City -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Google Map Location Link</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          name="location"
+          placeholder="Paste the location link here"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          name="city"
+          required
+        />
+      </div>
+
+      <!-- Date and Description -->
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          name="date"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Event Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          rows="4"
+          placeholder="Provide details about the event"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Capacity -->
+      <div class="mb-3">
+        <label for="capacity" class="form-label">Maximum Capacity</label>
+        <input
+          type="number"
+          class="form-control"
+          id="capacity"
+          name="capacity"
+          required
+        />
+      </div>
+
+      <!-- Rules -->
+      <div class="mb-3">
+        <label for="rules" class="form-label">Event Rules</label>
+        <textarea
+          class="form-control"
+          id="rules"
+          name="rules"
+          rows="3"
+          placeholder="Specify rules for the event"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Requirements -->
+      <h3 style="color: #f39c12;">Requirements</h3>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="carAllowed"
+          name="carAllowed"
+        />
+        <label class="form-check-label" for="carAllowed"
+          >Car Parking Allowed</label
+        >
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="foodAvailable"
+          name="foodAvailable"
+        />
+        <label class="form-check-label" for="foodAvailable"
+          >Food Available</label
+        >
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="equipmentProvided"
+          name="equipmentProvided"
+        />
+        <label class="form-check-label" for="equipmentProvided"
+          >Equipment Provided</label
+        >
+      </div>
+
+      <!-- Venue -->
+      <h3 style="color: #f39c12;">Venue Type</h3>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="openPlace"
+          name="venueType"
+          value="Open Place"
+          required
+        />
+        <label class="form-check-label" for="openPlace">Open Place</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="roofPlace"
+          name="venueType"
+          value="Roof"
+          required
+        />
+        <label class="form-check-label" for="roofPlace">On a Roof</label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="publicPlace"
+          name="venueType"
+          value="Public Place"
+          required
+        />
+        <label class="form-check-label" for="publicPlace">Public Place</label>
+      </div>
+
+      <!-- Contact Info -->
+      <h3 style="color: #f39c12;">Contact Information</h3>
+      <div class="mb-3">
+        <label for="contactNumber" class="form-label">Contact Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="contactNumber"
+          name="contactNumber"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="contactEmail" class="form-label">Contact Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="contactEmail"
+          name="contactEmail"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="whatsappLink" class="form-label">WhatsApp Group Link</label>
+        <input
+          type="url"
+          class="form-control"
+          id="whatsappLink"
+          name="whatsappLink"
+          placeholder="Paste WhatsApp Group link"
+          required
+        />
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="btn btn-warning mt-3"
+          style="font-weight: bold; color: black;"
+        >
+          Create Event
+        </button>
+      </div>
+    </form>
+  </div>
+</body>

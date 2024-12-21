@@ -1,0 +1,89 @@
+<% layout("/layouts/boilerplate") %>
+
+<body
+  style="
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7879474.jpg&f=1&nofb=1&ipt=70b46783528c9d079a78d65659506ab5c8863214266bfc7325f6b9117f1a9a6d&ipo=images');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+  "
+>
+  <div class="container py-5 text-center">
+    <!-- Heading -->
+    <h1 class="display-4 fw-bold mb-4">Planet Details</h1>
+    <p class="lead mb-5">Explore the fascinating characteristics of the celestial body.</p>
+
+    <!-- Planet Details Card -->
+    <div class="card bg-dark text-white shadow-lg mx-auto" style="max-width: 800px; border-radius: 20px;">
+      <div class="row g-0">
+        <!-- Planet Image -->
+        <div class="col-md-6">
+          <img
+            src="https://images.hdqwalls.com/wallpapers/purple-planet-space-4k-ij.jpg"
+            class="img-fluid rounded-start"
+            alt="Planet Image"
+            style="height: 100%; object-fit: cover; border-top-left-radius: 20px; border-bottom-left-radius: 20px;"
+          />
+        </div>
+
+        <!-- Planet Information -->
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="card-body text-start">
+            <h3 class="card-title mb-4">Name: <%= planet.englishName %></h3>
+            <p class="card-text">
+              <strong>Mass:</strong> <%= planet.mass.massValue %> kg
+            </p>
+            <p class="card-text">
+              <strong>Gravity:</strong> <%= planet.gravity %> m/s²
+            </p>
+            <p class="card-text">
+              <strong>Discovered By:</strong> <%= planet.discoveredBy %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Gallery Button -->
+    <div class="mt-5">
+      <a href="/events" class="btn btn-gradient btn-lg px-5">Back to Astroevents</a>
+    </div>
+  </div>
+
+  <!-- Custom Styling -->
+  <style>
+    .btn-gradient {
+      background: linear-gradient(45deg, #007bff, #d63384);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(45deg, #0056b3, #b62272);
+      transform: scale(1.1);
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .card-text {
+      font-size: 1.1rem;
+    }
+  </style>
+</body>

@@ -1,0 +1,14 @@
+<h2>Upcoming Astronomical Events</h2>
+<p>Events length: <%= events.length %></p>
+<ul>
+  <% if (events.length === 0) { %>
+    <li>No upcoming events found.</li>
+  <% } else { %>
+    <% events.forEach(event => { %>
+      <li>
+        <strong>Name:</strong> <%= event.name %> <br>
+        <strong>Date:</strong> <%= event.date %>
+      </li>
+    <% }) %>
+  <% } %>
+</ul>

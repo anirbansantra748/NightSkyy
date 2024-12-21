@@ -1,0 +1,142 @@
+<% layout("/layouts/boilerplate") %>
+
+<body
+  style="
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7879474.jpg&f=1&nofb=1&ipt=70b46783528c9d079a78d65659506ab5c8863214266bfc7325f6b9117f1a9a6d&ipo=images');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+  "
+>
+  <div class="container text-center py-5">
+    <!-- Heading -->
+    <h1 class="display-4 fw-bold mb-4">Explore the Cosmos</h1>
+    <p class="lead mb-5">Discover planets, stars, and the wonders of the universe.</p>
+
+    <!-- Row for buttons -->
+    <div class="row my-5 justify-content-center">
+      <div class="col-md-4 mb-3">
+        <a href="/pod" class="btn btn-lg btn-gradient btn-block">
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1kPgnny5vhz5z-IvXCCDx18qwNU1vdBiT%3Dw1200&f=1&nofb=1"
+            class="img-fluid rounded-circle mb-3"
+            alt="Picture of the Day"
+            style="width: 80px; height: 80px;"
+          />
+          Picture of the Day
+        </a>
+      </div>
+    </div>
+
+    <!-- Row for forms -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card bg-dark text-white shadow">
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4kwallpapers.com%2Fimages%2Fwallpapers%2Fplanet-earth-orbit-outer-space-cosmos-1920x1200-8769.jpg&f=1&nofb=1"
+            class="card-img"
+            alt="Planet"
+            style="opacity: 0.7;"
+          />
+          <div class="card-img-overlay d-flex flex-column justify-content-center">
+            <form action="/planetInfo" method="get" class="text-center">
+              <h3 class="mb-3">Enter Planet Name</h3>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="planetName"
+                  name="planetName"
+                  placeholder="Enter Planet Name"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-outline-light">
+                Get Planet Information
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card bg-dark text-white shadow">
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp9436703.jpg&f=1&nofb=1&ipt=0cea05f7d6ec3de347d952bec93a6ed375116702099df1bd3795154ab4b6c162&ipo=images"
+            class="card-img"
+            alt="Star"
+            style="opacity: 0.7;"
+          />
+          <div class="card-img-overlay d-flex flex-column justify-content-center">
+            <form action="/starInfo" method="get" class="text-center">
+              <h3 class="mb-3">Enter Star Name</h3>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="starName"
+                  name="starName"
+                  placeholder="Enter Star Name"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-outline-light">
+                Get Star Information
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row for Back to Gallery button -->
+    <div class="row my-5">
+      <div class="col-12">
+        <a href="/astrogallery" class="btn btn-gradient btn-lg">
+          Back to Gallery
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Styling -->
+  <style>
+    .btn-gradient {
+      background: linear-gradient(45deg, #007bff, #00c6ff);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(45deg, #0056b3, #0090c1);
+      transform: scale(1.1);
+    }
+
+    .form-control {
+      border-radius: 50px;
+      padding: 10px 20px;
+    }
+
+    .card {
+      border: none;
+      overflow: hidden;
+      border-radius: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-img-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+    }
+  </style>
+</body>

@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") %>
+<body style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg');">
+  <h1 class="text-center my-4" style="color:aliceblue">Search Results for "<%= query %>"</h1>
+
+  <% if (results.length > 0) { %>
+    <div class="container">
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% results.forEach(post => { %>
+        <div class="col-12">
+          <div class="card listing-card mb-3">
+            <a href="view/<%= post._id %>" class="card-link">
+              <img src="<%= post.image %>" class="card-img-top" alt="image" />
+            </a>
+            <div class="card-body">
+              <p class="card-title"><b><%= post.title %></b></p>
+              <i class="fa-regular fa-heart"></i> <%= post.likes %> Likes
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  <% } else { %>
+    <p class="text-center mt-4" style="color:aliceblue">No posts found matching your search criteria.</p>
+  <% } %>
+</body>

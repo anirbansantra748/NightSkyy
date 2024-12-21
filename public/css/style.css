@@ -1,0 +1,29 @@
+body {
+    /* padding: 5rem; */
+    margin: 0;
+    background-image: url('https://free4kwallpapers.com/uploads/originals/2021/08/01/astronaut-wallpaper.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .nav-link:hover, .btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #00acee !important;
+}
+
+.contact-btn {
+  background-color: #ffce45;
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-btn:hover {
+  background-color: #ffa726;
+}

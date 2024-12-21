@@ -1,0 +1,63 @@
+<% layout("/layouts/boilerplate") %>
+
+<body style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=600https://scontent.fccu14-1.fna.fbcdn.net/v/t39.30808-6/451745723_1024320352612192_2649783107366186335_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zdOdMbU1hU8Q7kNvgGroBp9&_nc_ht=scontent.fccu14-1.fna&oh=00_AYCOI9FtNsNcqbCcV5zwYFuNLAb58CXFEHsDtYS3eStKDA&oe=669E0C11');">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4" style="color:white">Search Results for Star Meetups</h1>
+
+    <div class="row">
+      <% if (meetups.length === 0) { %>
+        <div class="col-12">
+          <p class="text-center" style="color:white">No meetups found for the given search criteria.</p>
+        </div>
+      <% } else { %>
+        <% meetups.forEach(meetup => { %>
+          <div class="col-md-6 mb-4">
+            <div class="card text-bg-dark">
+              <img src="https://static.vecteezy.com/system/resources/previews/013/717/499/non_2x/night-sky-above-clouds-with-full-moon-and-stars-free-vector.jpg" class="card-img" alt="Night Sky">
+              <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: rgba(0, 0, 0, 0.6); border-radius: 5px;">
+                <h5 class="card-title"><i class="fa fa-star"></i> <%= meetup.eventName %></h5>
+                <p class="card-text"><i class="fa fa-map-marker-alt"></i> Location: <%= meetup.location %>, <%= meetup.city %></p>
+                <p class="card-text"><i class="fa fa-calendar-alt"></i> Date: <%= meetup.date.toDateString() %></p>
+                <p class="card-text"><i class="fa fa-users"></i> Capacity: <%= meetup.capacity %> people</p>
+                <div class="d-flex justify-content-between mt-3">
+                  <a href="/starMeetup/<%= meetup._id %>" class="btn btn-outline-light">View Details</a>
+                  <div class="text-light">
+                    <i class="fa fa-envelope"></i> <%= meetup.contactEmail %>
+                    <i class="fa fa-phone ml-3"></i> <%= meetup.contactNumber %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Custom Styling -->
+  <style>
+    .card {
+      border: none;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card-title, .card-text {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    .btn-outline-light {
+      border-color: #fff;
+      color: #fff;
+    }
+    .btn-outline-light:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+  </style>
+
+  <!-- Add Font Awesome & Bootstrap if not already included in the layout -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>

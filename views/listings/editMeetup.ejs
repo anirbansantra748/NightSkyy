@@ -1,0 +1,125 @@
+<% layout("/layouts/boilerplate") %>
+
+<body style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg'); background-size: cover; background-attachment: fixed; font-family: Arial, sans-serif;">
+  <div class="container mt-5">
+    <div class="card mx-auto shadow-lg" style="max-width: 750px; border-radius: 15px; overflow: hidden;">
+      <div class="card-body" style="background-color: rgba(0, 0, 0, 0.85); color: #f5f5f5;">
+        <h2 class="card-title text-center text-light mb-3">Edit Meetup Details</h2>
+
+        <form action="/meetup/edit/<%= meetup._id %>?_method=PUT" method="POST">
+          <!-- Event Name -->
+          <div class="form-group mb-3">
+            <label for="eventName" class="text-light">Event Name</label>
+            <input type="text" name="eventName" id="eventName" class="form-control" value="<%= meetup.eventName %>" required>
+          </div>
+
+          <!-- Location and City -->
+          <div class="form-group mb-3">
+            <label for="location" class="text-light">Location</label>
+            <input type="text" name="location" id="location" class="form-control" value="<%= meetup.location %>" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="city" class="text-light">City</label>
+            <input type="text" name="city" id="city" class="form-control" value="<%= meetup.city %>" required>
+          </div>
+
+          <!-- Date -->
+          <div class="form-group mb-3">
+            <label for="date" class="text-light">Date</label>
+            <input type="date" name="date" id="date" class="form-control" value="<%= meetup.date.toISOString().split('T')[0] %>" required>
+          </div>
+
+          <!-- Description -->
+          <div class="form-group mb-3">
+            <label for="description" class="text-light">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="3" required><%= meetup.description %></textarea>
+          </div>
+
+          <!-- Capacity -->
+          <div class="form-group mb-3">
+            <label for="capacity" class="text-light">Capacity</label>
+            <input type="number" name="capacity" id="capacity" class="form-control" value="<%= meetup.capacity %>" required>
+          </div>
+
+          <!-- Rules -->
+          <div class="form-group mb-3">
+            <label for="rules" class="text-light">Rules</label>
+            <textarea name="rules" id="rules" class="form-control" rows="3"><%= meetup.rules %></textarea>
+          </div>
+
+          <!-- Facilities (Checkboxes) -->
+          <div class="form-check form-switch text-light mb-3">
+            <input type="checkbox" class="form-check-input" id="carAllowed" name="carAllowed" <%= meetup.carAllowed ? 'checked' : '' %>>
+            <label class="form-check-label" for="carAllowed">Car Allowed</label>
+          </div>
+          <div class="form-check form-switch text-light mb-3">
+            <input type="checkbox" class="form-check-input" id="foodAvailable" name="foodAvailable" <%= meetup.foodAvailable ? 'checked' : '' %>>
+            <label class="form-check-label" for="foodAvailable">Food Available</label>
+          </div>
+          <div class="form-check form-switch text-light mb-3">
+            <input type="checkbox" class="form-check-input" id="equipmentProvided" name="equipmentProvided" <%= meetup.equipmentProvided ? 'checked' : '' %>>
+            <label class="form-check-label" for="equipmentProvided">Equipment Provided</label>
+          </div>
+          <div class="form-check form-switch text-light mb-3">
+            <input type="checkbox" class="form-check-input" id="chairsProvided" name="chairsProvided" <%= meetup.chairsProvided ? 'checked' : '' %>>
+            <label class="form-check-label" for="chairsProvided">Chairs Provided</label>
+          </div>
+
+          <!-- Optional Fields -->
+          <div class="form-group mb-3">
+            <label for="itemsToBorrow" class="text-light">Items Available to Borrow</label>
+            <input type="text" name="itemsToBorrow" id="itemsToBorrow" class="form-control" value="<%= meetup.itemsToBorrow %>">
+          </div>
+
+          <!-- Age Limit -->
+          <div class="form-group mb-3">
+            <label for="ageLimit" class="text-light">Age Limit</label>
+            <input type="number" name="ageLimit" id="ageLimit" class="form-control" value="<%= meetup.ageLimit %>">
+          </div>
+
+          <!-- Social Links -->
+          <div class="form-group mb-3">
+            <label for="socialLinks" class="text-light">Social Links</label>
+            <input type="url" name="socialLinks" id="socialLinks" class="form-control" value="<%= meetup.socialLinks %>">
+          </div>
+
+          <!-- Contact Information -->
+          <div class="form-group mb-3">
+            <label for="contactNumber" class="text-light">Contact Number</label>
+            <input type="tel" name="contactNumber" id="contactNumber" class="form-control" value="<%= meetup.contactNumber %>" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="contactEmail" class="text-light">Contact Email</label>
+            <input type="email" name="contactEmail" id="contactEmail" class="form-control" value="<%= meetup.contactEmail %>" required>
+          </div>
+
+          <!-- Venue Type -->
+          <div class="form-group mb-3">
+            <label for="venueType" class="text-light">Venue Type</label>
+            <input type="text" name="venueType" id="venueType" class="form-control" value="<%= meetup.venueType %>" required>
+          </div>
+
+          <!-- Links to Images and WhatsApp -->
+          <div class="form-group mb-3">
+            <label for="memberSignaturesLink" class="text-light">Member Signatures Link</label>
+            <input type="url" name="memberSignaturesLink" id="memberSignaturesLink" class="form-control" value="<%= meetup.memberSignaturesLink %>">
+          </div>
+          <div class="form-group mb-3">
+            <label for="siteImageLink" class="text-light">Site Image Link</label>
+            <input type="url" name="siteImageLink" id="siteImageLink" class="form-control" value="<%= meetup.siteImageLink %>">
+          </div>
+          <div class="form-group mb-3">
+            <label for="whatsappLink" class="text-light">WhatsApp Group Link</label>
+            <input type="url" name="whatsappLink" id="whatsappLink" class="form-control" value="<%= meetup.whatsappLink %>" required>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-success mt-3"><i class="fa fa-save"></i> Save Changes</button>
+            <a href="/starMeetup" class="btn btn-outline-light mt-3">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
